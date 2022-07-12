@@ -1,5 +1,6 @@
 import React from 'react'
 import { Form, Input } from 'antd';
+
 interface IProps {
     label?: string
     name: string
@@ -16,7 +17,7 @@ function TextEditor({ label, name, className,placeholder, required, message = 'P
             name={name}
             rules={[{ required: required, message: message }]}
         >
-            <Input placeholder={placeholder || label} className={className}   />
+            <Input  placeholder={placeholder || label} className={'input '+className}   />
         </Form.Item>
     )
 }
