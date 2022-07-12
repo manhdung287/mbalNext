@@ -1,9 +1,10 @@
 import React from 'react'
-import { Col, Divider, Form, Row } from 'antd';
+import { Form } from 'antd';
 import HumanIcon from 'src/styles/images';
 import Input from 'lib/input';
+import { APIGet, APIPost, APIPut } from 'config/ProcessAPI';
+import ButtonBase  from 'lib/button/Button';
 
-const style: React.CSSProperties = { background: '#0092ff', padding: '8px 0' };
 function index() {
 
   const onFilishForm = (values: any) => {
@@ -12,6 +13,11 @@ function index() {
   const onFinishFailed = (errorInfo: any) => {
     console.log('Failed:', errorInfo);
   };
+
+  const onClick = async () => {
+    const testGet = await APIPut('/sx', { s: 'sssn' }, 'adhasjhdasjdajsdhakjda');
+    console.log(testGet);
+  }
   return (
     <div className='login_page'>
       <p>Xin chào!</p>
@@ -19,7 +25,7 @@ function index() {
         name="basic"
         labelCol={{ span: 8 }}
         wrapperCol={{ span: 16 }}
-        initialValues={{ remember: true }}
+        initialValues={{ name2: 'name2' }}
         onFinish={onFilishForm}
         onFinishFailed={onFinishFailed}
         autoComplete="off"
@@ -34,14 +40,11 @@ function index() {
           name='name2'
           placeholder='Tên đăng nhập'
           label='Tên đăng nhập'
+
         />
       </Form>
-        <i className="fa-solid fa-circle-plus fa-beat"></i>
-        <i className="fa-solid fa-heart fa-beat"></i>
-        <i className="fa-solid fa-heart fa-beat"   ></i>
-        <i className="fa-solid fa-heart fa-beat" ></i>
-        <i className="fa-solid fa-heart fa-beat"  ></i>
-     
+      <ButtonBase text='Click' onClick={onClick} background='red' />
+      <ButtonBase text='Click' onClick={onClick} icon={ <i className="fa-solid fa-address-book"></i>} />
     </div>
   )
 }
