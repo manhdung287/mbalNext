@@ -43,7 +43,7 @@ function index() {
 
         />
       </Form>
-      <ButtonBase text='Click' onClick={onClick} background='red' />
+      <ButtonBase text='Click' onClick={onClick} background='red'   />
       <ButtonBase text='Click' onClick={onClick} icon={ <i className="fa-solid fa-address-book"></i>} />
     </div>
   )

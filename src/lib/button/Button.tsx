@@ -17,7 +17,7 @@ function ButtonBase({ className, classNameLabel, text, onClick, title, icon, bac
         <Button style={{ backgroundColor: background }}
             onClick={onClick} title={title} icon={icon}
             className={' btn ' + className}
-            loading
+            loading={loading}
         >
             <span className={classNameLabel}>{text}</span>
         </Button>
