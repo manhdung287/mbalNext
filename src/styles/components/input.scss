@@ -1,0 +1,14 @@
+.input-icon-wrapper {
+
+}
+
+.input-container {
+
+}
+
+.input-icon-container {
+    display: grid;
+    grid-template-columns: 30px 1fr;
+    grid-gap: 10px;
+    padding: 5px;
+}

@@ -2,14 +2,14 @@ import NavLink from 'lib/NavLink';
 import React from 'react'
 import { ROUTER } from 'routers/Routers';
 
-const LANDING  =()=> {
+const LANDING = () => {
     return (
-         <div className='home'>
-            <NavLink text='Landing' to={ROUTER.DetailLink('abs')}>
-
-            </NavLink>
-            
-         </div>
+        <div className='home'>
+            <div>
+                <NavLink text='Detail' to={ROUTER.DetailLink('abs')} />
+            </div>
+            <NavLink text='Login' to={ROUTER.Login} />
+        </div>
 
     );
 }

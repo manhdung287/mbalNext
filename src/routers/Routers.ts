@@ -1,5 +1,8 @@
 export const ROUTER = {
     LANDING: '/',
     DetailLink: (dbId: string) => '/' + dbId,
-    Login:'/dang-nhap'
+    Login:'/login',
+    ForgotPassword:'/forgot-password',
+    ForgotAccount:'/forgot-account',
+
 }
