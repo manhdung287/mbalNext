@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "baseUrl": "./",
+    "target": "ES6",
+    "paths": {
+      "lib/*": ["./src/lib/*"],
+      "res/*": ["./src/res/*"],
+      "core/*": ["./src/core/*"],
+      "routers/*": ["./src/routers/*"],
+      "screens/*": ["./src/screens/*"],
+      "config/*": ["./src/config/*"],
+      "utils/*": ["./src/utils/*"],
+      "modules/*": ["./src/modules/*"]
+    }
+  },
+  "exclude": ["node_modules", "build", "dist", ".next"]
+}
