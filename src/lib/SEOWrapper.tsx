@@ -6,8 +6,8 @@ interface ImageSeo {
     url: string,
     width: number,
     height: number,
-    alt: string,
-    type: string,
+    alt?: string,
+    type?: string,
 }
 
 interface IProps {
