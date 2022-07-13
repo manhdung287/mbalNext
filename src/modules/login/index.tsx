@@ -4,7 +4,7 @@ import Input from 'lib/input';
 import { APIPost, APIPut } from 'src/services/ProcessAPI';
 import { useRouter } from 'next/router';
 import ButtonForm from 'lib/button/ButtonForm';
-import { UrlLoginPath } from 'config/const';
+import { UrlLoginPath } from 'src/services/apiPath';
 import Cookies from 'js-cookie';
 import LayoutLogin from './components/LayoutLogin';
 import NavLink from 'lib/NavLink';
@@ -30,6 +30,7 @@ function index() {
       notification.open({
         message: 'Error',
         description: request?.msg,
+        duration:6
       });
     }
     setLoading(false);

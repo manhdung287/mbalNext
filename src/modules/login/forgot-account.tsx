@@ -1,5 +1,5 @@
 import { Form, notification } from 'antd';
-import { UrlLoginPath } from 'config/const';
+import { UrlLoginPath } from 'src/services/apiPath';
 import Cookies from 'js-cookie';
 import ButtonForm from 'lib/button/ButtonForm';
 import Input from 'lib/input';

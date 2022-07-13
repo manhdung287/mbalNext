@@ -1,4 +1,4 @@
-import { SiteName } from 'config/const';
+import { SiteName, Titletabbrowser } from 'config/const';
 import { NextSeo } from 'next-seo';
 import { webHost } from 'src/services/apiAddress';
 
@@ -11,17 +11,16 @@ interface ImageSeo {
 }
 
 interface IProps {
-    title: string,
     description?: string
     images: Array<ImageSeo>
     titleopenGraph?: string
     descriptionGraph?: string
 }
 
-function SEOWrapper({ title, images, description, titleopenGraph, descriptionGraph }: IProps) {
+function SEOWrapper({  images, description, titleopenGraph, descriptionGraph }: IProps) {
     return (
         <NextSeo
-            title={title || "Using More of Config"}
+            title={Titletabbrowser || "Using More of Config"}
             description={description || "This example uses more of the available config options."}
             openGraph={{
                 url: webHost,
