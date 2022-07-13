@@ -22,6 +22,8 @@ const handleErrorCode = (status: any) => {
             window.location.href = ROUTERS.Login
             break
         case 403:
+            Cookies.remove('accessToken');
+            window.location.href = ROUTERS.Login
             return notification.open({
                 message: 'Forbidden',
                 description:
