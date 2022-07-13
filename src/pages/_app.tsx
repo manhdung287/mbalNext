@@ -4,15 +4,16 @@ import { useRouter } from 'next/router';
 import Cookies from 'js-cookie';
 import { useEffect } from 'react';
 import { ROUTERS } from 'routers/Routers';
+import useCheckLogin from 'src/hook/useCheckLogin';
 
 function MyApp({ Component, pageProps }: AppProps) {
-  const router = useRouter();
-  let getToken = Cookies.get('accessToken')
+  const router = useRouter()
+  const checkLogin = useCheckLogin();
   useEffect(() => {
-      if (!getToken || getToken.length === 0) {
+      if (checkLogin) {
         router.push(ROUTERS.Login)
       }
-  }, [getToken])
+  }, [checkLogin])
 
   return <Component {...pageProps} />
 }

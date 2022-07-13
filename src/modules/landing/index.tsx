@@ -1,5 +1,5 @@
 import NavLink from 'lib/NavLink';
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { ROUTERS } from 'routers/Routers';
 import Cookies from 'js-cookie';
 import { useRouter } from 'next/router';
@@ -10,11 +10,11 @@ import ButtonUpload from 'lib/button/ButtonUpload';
 import ButtonSwitch from 'lib/button/Switch';
 import CheckBox from 'lib/input/CheckBox';
 import type { CheckboxChangeEvent } from 'antd/es/checkbox';
-
+import Modal from 'lib/modal';
+import Loading from 'lib/Loading';
 
 const LANDING = () => {
-    const router = useRouter();
-
+    const [modalVisible, setModal1Visible] = useState(false);
     const onLogout = () => {
         Cookies.remove('accessToken');
         location.reload();
@@ -57,18 +57,29 @@ const LANDING = () => {
     const onChangeSw = (e: boolean) => {
         console.log(`checked = ${e}`);
     };
+    const onConfirmModal = () => {
+        setModal1Visible(!modalVisible);
+    }
     return (
         <>
             <SEOWrapper images={[{ url: '', width: 500, height: 600 }]} />
             <div className='landing'>
                 <Menu mode="horizontal" items={items} />
             </div>
-            <div>
+            <div className='landing'>
                 <ButtonUpload />
-                <ButtonSwitch onChange={onChangeSw} label='label Switch'/>
+                <ButtonSwitch onChange={onChangeSw} label='label Switch' />
                 <ButtonSwitch onChange={onChangeSw} defaultChecked={true} />
-                <CheckBox label='Chest' onChange={onChange}/>
+                <CheckBox label='Chest' onChange={onChange} />
+                <ButtonBase onClick={onConfirmModal} text='Open Modal' />
+                <Loading />
             </div>
+            <Modal
+                visible={modalVisible}
+                onOk={onConfirmModal}
+                onCancel={onConfirmModal}
+                children={<p>Text Modal</p>}
+            />
         </>
     );
 }

@@ -5,12 +5,13 @@ interface IProps {
   visible: boolean
   onOk: () => void
   onCancel: () => void
-  okText: string
-  cancelText: string
+  okText?: string
+  cancelText?: string
   children: any
+  title?:string
 }
 
-function index({ visible, onOk, onCancel, okText, cancelText, children }:IProps) {
+function index({ visible, onOk, onCancel, okText='Ok', cancelText='Cancel', children,title='Modal' }:IProps) {
   return (
     <Modal
       visible={visible }
@@ -18,7 +19,7 @@ function index({ visible, onOk, onCancel, okText, cancelText, children }:IProps)
       onCancel={onCancel}
       okText={okText}
       cancelText={cancelText}
-
+      title={title}
     >
       {children}
     </Modal>
