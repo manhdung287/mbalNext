@@ -1,12 +1,15 @@
 import { createAuthHeader } from 'core/createAuthHeader';
 import API from 'axios';
 import { gateHost } from './apiAddress';
+import Cookies from 'js-cookie';
 
-export function APIPost(url: string, postData: any, token?: any, configs?: any) {
+const getToken = Cookies.get('accessToken')
+
+export function APIPost(url: string, postData: any,  configs?: any) {
     return API.post(gateHost + url, postData, {
-        headers: createAuthHeader(token, configs)
+        headers: createAuthHeader(getToken, configs)
     })
-        .then((res: { data: { id: any; data: any; }; }) => {
+        .then((res: { data: {  data: any; }; }) => {
             const { data } = res.data;
             return Promise.resolve(data);
         })
@@ -15,11 +18,11 @@ export function APIPost(url: string, postData: any, token?: any, configs?: any) 
         });
 }
 
-export function APIGet(url: string, token: any, configs?: any) {
+export function APIGet(url: string,  configs?: any) {
     return API.get(gateHost + url, {
-        headers: createAuthHeader(token, configs)
+        headers: createAuthHeader(getToken, configs)
     })
-        .then((res: { data: { id: any; data: any; }; }) => {
+        .then((res: { data: {  data: any; }; }) => {
             const { data } = res.data;
             return Promise.resolve(data);
         })
@@ -28,16 +31,16 @@ export function APIGet(url: string, token: any, configs?: any) {
         });
 }
 
-export function APIPut(url: string, postData: any, token: any, configs?: any) {
+export function APIPut(url: string, postData: any,  configs?: any) {
     return API.post(gateHost + url, postData, {
-        headers: createAuthHeader(token, configs)
+        headers: createAuthHeader(getToken, configs)
     })
-        .then((res: { data: { id: any; data: any; }; }) => {
+        .then((res: { data: {  data: any; }; }) => {
             const { data } = res.data;
             return Promise.resolve(data);
         })
         .catch(() => {
             return Promise.resolve(null);
-        });
+        });       
 }
 

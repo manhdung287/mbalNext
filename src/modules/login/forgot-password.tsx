@@ -1,16 +1,14 @@
-import React, { useState } from 'react'
 import { Form, notification } from 'antd';
-import Input from 'lib/input';
-import { APIPost, APIPut } from 'src/services/ProcessAPI';
-import { useRouter } from 'next/router';
-import ButtonForm from 'lib/button/ButtonForm';
 import { UrlLoginPath } from 'config/const';
 import Cookies from 'js-cookie';
+import ButtonForm from 'lib/button/ButtonForm';
+import Input from 'lib/input';
+import { useRouter } from 'next/router';
+import React, { useState } from 'react'
+import { APIPost } from 'src/services/ProcessAPI';
 import LayoutLogin from './components/LayoutLogin';
-import NavLink from 'lib/NavLink';
-import { ROUTERS } from 'routers/Routers';
 
-function index() {
+function ForgotPassword() {
   const router = useRouter();
 
   const [showPassword, setShowPassWord] = useState(false);
@@ -38,6 +36,7 @@ function index() {
     console.log('Failed:', errorInfo);
   };
 
+
   return (
     <LayoutLogin>
       <Form
@@ -60,18 +59,18 @@ function index() {
           className='input_form_login'
         />
         <Input
-          name='password'
+          name='oldpassword'
           placeholder=' Your password '
           wrapperCol={{ span: 24 }}
           className='input_form_login'
+          label='Old Password'
           type={showPassword ? 'text' : 'password'}
           suffix={showPassword ? <i className="fa-regular fa-eye-slash" onClick={onShowPassword}></i> : <i className="fa-regular fa-eye" onClick={onShowPassword}></i>}
         />
         <ButtonForm loading={loading} text='Login' htmlType='submit' wrapperCol={{ span: 24 }} className='btn_submit_form_login' />
-        <p>Forgot your password ?  <NavLink to={ROUTERS.ForgotPassword} text='Change here' className='text_link' /></p>
       </Form>
     </LayoutLogin>
   )
 }
 
-export default index
+export default ForgotPassword

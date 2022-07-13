@@ -6,9 +6,10 @@ import { useRouter } from 'next/router';
 import ButtonForm from 'lib/button/ButtonForm';
 import { UrlLoginPath } from 'config/const';
 import Cookies from 'js-cookie';
-import LayoutLogin from './components/LayoutLogin';
+ 
 import NavLink from 'lib/NavLink';
 import { ROUTERS } from 'routers/Routers';
+import LayoutLogin from 'modules/login/components/LayoutLogin';
 
 function index() {
   const router = useRouter();
@@ -37,6 +38,7 @@ function index() {
   const onFinishFailed = (errorInfo: any) => {
     console.log('Failed:', errorInfo);
   };
+
 
   return (
     <LayoutLogin>

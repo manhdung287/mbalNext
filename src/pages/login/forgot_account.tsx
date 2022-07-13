@@ -1,3 +1,3 @@
-import ForgotAccount from "modules/login/ForgotAccount";
+import ForgotAccount from "modules/login/forgot-account";
 
 export default ForgotAccount

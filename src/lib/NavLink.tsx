@@ -42,7 +42,7 @@ export default function NavLink({
     <Link
       href={to ? to : '/'}
     >
-      <a className={className} title={title ? title : text ? text : ''} href={to ? to : '/'}>
+      <a className={'link '+className} title={title ? title : text ? text : ''} href={to ? to : '/'}>
         {icon}
         {!!text && <span>{text}</span>}
         {children}
