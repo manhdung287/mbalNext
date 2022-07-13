@@ -1,17 +1,20 @@
 import React from 'react'
 
-interface IProps{
-    value:any
-    suffix?:boolean
-    prefix?:boolean
-    currency:string
+interface IProps {
+  value: any
+  suffix?: boolean
+  prefix?: boolean
+  currency: string
+  className?: string
 }
 
-function TextPrice({value,suffix,prefix,currency}:IProps) {
+function TextPrice({ value, suffix, prefix, currency, className }: IProps) {
   return (
-    <div>
-
-    </div>
+    <p className={'text_price ' + className}>
+      {prefix && currency}
+      <span>{value}</span>
+      {suffix && currency}
+    </p>
   )
 }
 
