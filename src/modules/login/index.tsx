@@ -1,37 +1,44 @@
 import React, { useState } from 'react'
-import { Form } from 'antd';
-import HumanIcon from 'src/styles/images';
+import { Form, notification } from 'antd';
 import Input from 'lib/input';
-import { APIGet, APIPost, APIPut } from 'config/ProcessAPI';
+import { APIPost, APIPut } from 'config/ProcessAPI';
 import { useRouter } from 'next/router';
-import { ROUTERS } from 'routers/Routers';
 import ButtonForm from 'lib/button/ButtonForm';
+import { StatusAPI, UrlLoginPath } from 'config/const';
+import Cookies from 'js-cookie';
+import { ROUTERS } from 'routers/Routers';
 
 function index() {
   const router = useRouter();
 
   const [showPassword, setShowPassWord] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const onShowPassword = () => {
     setShowPassWord(!showPassword);
   }
-  const onFilishForm = (values: any) => {
-    console.log(values)
-    document.cookie = `value=${values.name}`;
-    router.push(ROUTERS.LANDING)
+  const onFilishForm = async (values: any) => {
+    setLoading(true)
+    const request = await APIPost(UrlLoginPath, values)
+    if (request?.accessToken) {
+      Cookies.set('accessToken', request?.accessToken);
+      router.push(ROUTERS.LANDING)
+    }
+    if (request?.code === 401) {
+      notification.open({
+        message: 'Error',
+        description: request?.msg,
+      });
+    }
+    setLoading(false);
   }
   const onFinishFailed = (errorInfo: any) => {
     console.log('Failed:', errorInfo);
   };
 
-  const onClick = async () => {
-    const testGet = await APIPut('/sx', { s: 'sssn' }, 'adhasjhdasjdajsdhakjda');
-    console.log(testGet);
-  }
 
   return (
     <div className='login_page'>
-
       <Form
         name="basic"
         labelCol={{ span: 8 }}
@@ -45,12 +52,11 @@ function index() {
         <p className='label_login'>Wellcome!</p>
         <img alt='man' src='/imgs/man.jpg' width={150} height={150} className='img_login' />
         <Input
-          name='name'
+          name='userName'
           placeholder='Your Name Account'
           label='Account'
           wrapperCol={{ span: 24 }}
           className='input_form_login'
-          
         />
         <Input
           name='password'
@@ -58,9 +64,9 @@ function index() {
           wrapperCol={{ span: 24 }}
           className='input_form_login'
           type={showPassword ? 'text' : 'password'}
-          suffix={showPassword ? <i className="fa-regular fa-eye-slash" onClick={onShowPassword}></i> :<i className="fa-regular fa-eye" onClick={onShowPassword}></i> }
+          suffix={showPassword ? <i className="fa-regular fa-eye-slash" onClick={onShowPassword}></i> : <i className="fa-regular fa-eye" onClick={onShowPassword}></i>}
         />
-        <ButtonForm text='Login' htmlType='submit' wrapperCol={{ span: 24 }} className='btn_submit_form_login' />
+        <ButtonForm loading={loading} text='Login' htmlType='submit' wrapperCol={{ span: 24 }} className='btn_submit_form_login' />
       </Form>
 
     </div>

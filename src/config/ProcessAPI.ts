@@ -1,9 +1,10 @@
 import { createAuthHeader } from 'core/createAuthHeader';
 import API from 'axios';
+import { gateHost } from './apiAddress';
 
 export function APIPost(url: string, postData: any, token?: any, configs?: any) {
-    return API.post(url, postData, {
-        headers: createAuthHeader(token,configs)
+    return API.post(gateHost + url, postData, {
+        headers: createAuthHeader(token, configs)
     })
         .then((res: { data: { id: any; data: any; }; }) => {
             const { data } = res.data;
@@ -14,9 +15,9 @@ export function APIPost(url: string, postData: any, token?: any, configs?: any) 
         });
 }
 
-export function APIGet(url: string, token: any,configs?: any) {
-    return API.get(url, {
-        headers: createAuthHeader(token,configs)
+export function APIGet(url: string, token: any, configs?: any) {
+    return API.get(gateHost + url, {
+        headers: createAuthHeader(token, configs)
     })
         .then((res: { data: { id: any; data: any; }; }) => {
             const { data } = res.data;
@@ -27,9 +28,9 @@ export function APIGet(url: string, token: any,configs?: any) {
         });
 }
 
-export function APIPut(url: string, postData: any, token: any,configs?: any) {
-    return API.post(url, postData, {
-        headers: createAuthHeader(token,configs)
+export function APIPut(url: string, postData: any, token: any, configs?: any) {
+    return API.post(gateHost + url, postData, {
+        headers: createAuthHeader(token, configs)
     })
         .then((res: { data: { id: any; data: any; }; }) => {
             const { data } = res.data;
