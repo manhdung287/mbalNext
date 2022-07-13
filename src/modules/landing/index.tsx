@@ -5,13 +5,14 @@ import Cookies from 'js-cookie';
 import { useRouter } from 'next/router';
 import ButtonBase from 'lib/button/Button';
 import SEOWrapper from 'lib/SEOWrapper';
-import { Menu, MenuProps } from 'antd';
+import { InputNumber, Menu, MenuProps } from 'antd';
 import ButtonUpload from 'lib/button/ButtonUpload';
 import ButtonSwitch from 'lib/button/Switch';
 import CheckBox from 'lib/input/CheckBox';
 import type { CheckboxChangeEvent } from 'antd/es/checkbox';
 import Modal from 'lib/modal';
 import Loading from 'lib/Loading';
+import InputNumberComponent from 'lib/input/InputNumber';
 
 const LANDING = () => {
     const [modalVisible, setModal1Visible] = useState(false);
@@ -60,6 +61,9 @@ const LANDING = () => {
     const onConfirmModal = () => {
         setModal1Visible(!modalVisible);
     }
+    const onChangeNumber = (value: number | string) => {
+        console.log('changed', value);
+      };
     return (
         <>
             <SEOWrapper images={[{ url: '', width: 500, height: 600 }]} />
@@ -73,6 +77,7 @@ const LANDING = () => {
                 <CheckBox label='Chest' onChange={onChange} />
                 <ButtonBase onClick={onConfirmModal} text='Open Modal' />
                 <Loading />
+                <InputNumberComponent onChange={onChangeNumber}  prefix='$'/>
             </div>
             <Modal
                 visible={modalVisible}
