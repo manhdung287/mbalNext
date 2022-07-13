@@ -24,7 +24,7 @@ function index() {
     const request = await APIPost(UrlLoginPath, values)
     if (request?.accessToken) {
       Cookies.set('accessToken', request?.accessToken);
-      console.log(request)
+     router.push(ROUTERS.Landing)
     }
     if (request?.code === 401) {
       notification.open({
@@ -67,6 +67,7 @@ function index() {
           type={showPassword ? 'text' : 'password'}
           suffix={showPassword ? <i className="fa-regular fa-eye-slash" onClick={onShowPassword}></i> : <i className="fa-regular fa-eye" onClick={onShowPassword}></i>}
         />
+          <p>Do you have a account ?  <NavLink to={ROUTERS.Register} text='Register' className='text_link' /></p>
         <ButtonForm loading={loading} text='Login' htmlType='submit' wrapperCol={{ span: 24 }} className='btn_submit_form_login' />
         <p>Forgot your password ?  <NavLink to={ROUTERS.ForgotPassword} text='Change here' className='text_link' /></p>
       </Form>

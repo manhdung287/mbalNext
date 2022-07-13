@@ -8,8 +8,8 @@ function LayoutLogin({ children }: any) {
     const router = useRouter();
     const getToken = Cookies.get('accessToken')
     useEffect(() => {
-        if (!getToken || getToken.length === 0) {
-            router.push(ROUTERS.Login)
+        if (getToken ) {
+            router.push(ROUTERS.Landing)
         }
     }, [getToken])
     return (

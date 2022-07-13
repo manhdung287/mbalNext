@@ -1,9 +1,13 @@
+import SEOWrapper from 'lib/SEOWrapper';
 import React from 'react'
 
-function Detail({data}:any) {
-  console.log(data)
+function Detail({ data }: any) {
+
   return (
-    <div>Detail</div>
+    <>
+      <SEOWrapper images={[{ url: '', width: 500, height: 600 }]} title='title web' description='new des' />
+      <div>Detail</div>
+    </>
   )
 }
 Detail.getInitialProps = async ({ query }: any) => {

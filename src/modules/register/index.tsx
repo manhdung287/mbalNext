@@ -6,12 +6,12 @@ import { useRouter } from 'next/router';
 import ButtonForm from 'lib/button/ButtonForm';
 import { UrlLoginPath } from 'config/const';
 import Cookies from 'js-cookie';
- 
+
 import NavLink from 'lib/NavLink';
 import { ROUTERS } from 'routers/Routers';
 import LayoutLogin from 'modules/login/components/LayoutLogin';
 
-function index() {
+function Register() {
   const router = useRouter();
 
   const [showPassword, setShowPassWord] = useState(false);
@@ -65,6 +65,16 @@ function index() {
           name='password'
           placeholder=' Your password '
           wrapperCol={{ span: 24 }}
+          label='Your PassWord'
+          className='input_form_login'
+          type={showPassword ? 'text' : 'password'}
+          suffix={showPassword ? <i className="fa-regular fa-eye-slash" onClick={onShowPassword}></i> : <i className="fa-regular fa-eye" onClick={onShowPassword}></i>}
+        />
+        <Input
+          name='confirmpassword'
+          placeholder='Your password '
+          wrapperCol={{ span: 24 }}
+          label='Confirm your PassWord'
           className='input_form_login'
           type={showPassword ? 'text' : 'password'}
           suffix={showPassword ? <i className="fa-regular fa-eye-slash" onClick={onShowPassword}></i> : <i className="fa-regular fa-eye" onClick={onShowPassword}></i>}
@@ -76,4 +86,4 @@ function index() {
   )
 }
 
-export default index
+export default Register
