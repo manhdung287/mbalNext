@@ -6,13 +6,14 @@ interface IProps {
     type?: string | any,
     htmlType?: "button" | "submit" | "reset" | undefined
     color?:string
+    className?:string
 }
 
-function ButtonForm({ color,htmlType = "button", type = 'primary', text = 'Xác nhận', wrapperCol = { offset: 8, span: 16 } }: IProps) {
+function ButtonForm({className, color,htmlType = "button", type = 'primary', text = 'Xác nhận', wrapperCol = { offset: 8, span: 16 } }: IProps) {
     return (
 
         <Form.Item wrapperCol={wrapperCol}>
-            <Button type={type} htmlType={htmlType} color={color}>
+            <Button type={type} htmlType={htmlType} color={color} className={className}>
                 {text}
             </Button>
         </Form.Item>

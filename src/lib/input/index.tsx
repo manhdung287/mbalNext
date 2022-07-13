@@ -6,23 +6,24 @@ interface IProps {
     name: string
     required?: boolean
     message?: string
-    icon?: any
     className?: string
     placeholder?: string
+    prefix?: any
+    suffix?: any
+    wrapperCol?: object
+    classNameLabel?:string
+    type?: string
 }
 
-function Input({ label, name, required = true, placeholder, className, message = 'Vui lòng nhập', icon }: IProps) {
+function Input({ label, prefix, suffix, name, required = true, type,
+     wrapperCol,placeholder, className,classNameLabel, message  }: IProps) {
     return (
         <div className='input-wrapper'>
-            {label ? <p>{label}</p> : null}
-            {
-                icon ? <div className='input-icon-container'>
-                    {icon}
-                    <TextEditor name={name} message={message} required={required} className={className}  placeholder={placeholder} />
-                </div> : <div className='input-container'>
-                    <TextEditor name={name} message={message} required={required} className={className}  />
-                </div>
-            }
+            {label ? <p className={'label_input '+ classNameLabel}>{label}</p> : null}
+            <div className='input-container'>
+                <TextEditor placeholder={placeholder} wrapperCol={wrapperCol} prefix={prefix} suffix={suffix} name={name} message={message} required={required} className={className} type={type} />
+            </div>
+
         </div>
     )
 }

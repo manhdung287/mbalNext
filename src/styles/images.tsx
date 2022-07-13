@@ -6,3 +6,4 @@ export default function HumanIcon (){
 export  function ErorIcon (){
     return <img src="./imgs/error.svg" width={15} height={15}/>
 }
+ 
