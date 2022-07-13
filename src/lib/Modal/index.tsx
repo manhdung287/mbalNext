@@ -1,10 +1,27 @@
 import React from 'react'
+import { Modal } from 'antd'
 
-function index() {
+interface IProps {
+  visible: boolean
+  onOk: () => void
+  onCancel: () => void
+  okText: string
+  cancelText: string
+  children: any
+}
+
+function index({ visible, onOk, onCancel, okText, cancelText, children }:IProps) {
   return (
-    <div>
-        Modal
-    </div>
+    <Modal
+      visible={visible }
+      onOk={onOk}
+      onCancel={onCancel}
+      okText={okText}
+      cancelText={cancelText}
+
+    >
+      {children}
+    </Modal>
   )
 }
 

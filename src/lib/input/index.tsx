@@ -1,4 +1,4 @@
-import TextEditor from 'lib/text/TextEditor'
+import TextEditor from 'lib/input/TextEditor'
 import React from 'react'
 
 interface IProps {
