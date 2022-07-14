@@ -13,6 +13,8 @@ import type { CheckboxChangeEvent } from 'antd/es/checkbox';
 import Modal from 'lib/modal';
 import Loading from 'lib/Loading';
 import InputNumberComponent from 'lib/input/InputNumber';
+import TextArea from 'antd/lib/input/TextArea';
+import TextAreaform from 'lib/input/TextAreaform';
 
 const LANDING = () => {
     const [modalVisible, setModal1Visible] = useState(false);
@@ -78,6 +80,7 @@ const LANDING = () => {
                 <ButtonBase onClick={onConfirmModal} text='Open Modal' />
                 <Loading />
                 <InputNumberComponent onChange={onChangeNumber}  prefix='$'/>
+                <TextAreaform/>
             </div>
             <Modal
                 visible={modalVisible}
